@@ -1,4 +1,4 @@
-import fastify, { FastifyRequest, FastifyReply } from 'fastify'
+import fastify from 'fastify'
 
 export default class Server {
     load() {
