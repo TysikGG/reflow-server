@@ -6,7 +6,7 @@ export default function loadDatabase() {
         case "mongodb":
             const db = new MongoDB(process.env.MONGODB_TOKEN);
             db.init().then(() => {
-                console.log("База данных подключена.")
+                console.log(`База данных инициализирована. Тип базы данных: ${process.env.DATABASE_TYPE}`)
             })
     }
 }
