@@ -1,9 +1,9 @@
 import { FastifyPluginAsync } from 'fastify';
 
-const userRoutes: FastifyPluginAsync = async (fastify, options) => {
+const databaseRegisterRoute: FastifyPluginAsync = async (fastify, options) => {
     fastify.get('/register', async () => { 
         
     })
 };
 
-export default userRoutes;
+export default databaseRegisterRoute;

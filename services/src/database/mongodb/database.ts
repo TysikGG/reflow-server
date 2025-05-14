@@ -22,7 +22,7 @@ export default class MongoDB {
 
             this.connect_API();
 
-            server.listen({ port: 27017, host: "0.0.0.0" }, (err, address) => {
+            server.listen({ port: Number(process.env.DATABASE_PORT) || 27017, host: "0.0.0.0" }, (err, address) => {
                 if (err) reject(err);
                 else resolve(console.log(`Сервер БД запущен, адрес: ${address}`))
             });
