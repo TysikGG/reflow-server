@@ -3,20 +3,26 @@ import User from "../../../libs/structures/User";
 import userSchema from "../schemas/User.schema";
 
 export default class MongoUser extends User {
-    async register() {
-        if (!this.auth?.hashed_password) throw new Error("При регистрации пароль не был указан!");
+    async create(hashed_password: string) {
+        if (!hashed_password) throw new Error("При регистрации пароль не был указан!");
         if (!this.auth?.username) throw new Error("При регистрации никнейм не был указан!");
 
         const generatedID = snowflake.generate();
-        
+
         const user = new userSchema({
             id: generatedID,
-            auth: {
-                hashed_password: this.auth.hashed_password,
-                username: this.auth.username
-            }
+            data: this.data,
+            auth: this.auth
         });
+        console.log("ID нового пользователя: " + generatedID);
 
-        await user.save();
+        const res = await user.save();
+        console.log(res);
+        return res;
+    }
+
+    async findByID(id: string) {
+        const res = await userSchema.findOne({ id: id });
+        console.log(res);
     }
 }
