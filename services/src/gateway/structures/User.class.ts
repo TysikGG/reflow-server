@@ -15,6 +15,8 @@ export default class GatewayUser extends User {
 
         if (!username || !hashed_password) return new Error("Никнейм или пароль не указаны при входе!");
 
-        await database.getUser(this, hashed_password);
+        const user = await database.getUserByUsername(username);
+
+        console.log(user);
     }
 }
