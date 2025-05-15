@@ -1,8 +1,8 @@
 import { FastifyPluginAsync } from 'fastify';
 import GatewayUser from '../../../structures/User.class';
 
-const registerRoute: FastifyPluginAsync = async (fastify, options) => {
-    fastify.post('/register', async (req, res) => {
+const loginRoute: FastifyPluginAsync = async (fastify, options) => {
+    fastify.post('/login', async (req, res) => {
         const username = req.body["username"];
         const hashed_password = req.body["hashed_password"];
 
@@ -13,8 +13,8 @@ const registerRoute: FastifyPluginAsync = async (fastify, options) => {
 
         const user = new GatewayUser(null, null, { username });
 
-        await user.register(hashed_password);
+        await user.login(hashed_password);
     })
 };
 
-export default registerRoute;
+export default loginRoute;

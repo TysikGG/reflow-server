@@ -1,11 +1,10 @@
-export interface UserProps {
+interface UserProps {
     id?: string;
     data?: object;
 }
 
-export interface UserAuthProps {
-    username: string,
-    hashed_password: string
+interface UserAuthProps {
+    username: string
 }
 
 export default class User implements UserProps {
@@ -17,8 +16,7 @@ export default class User implements UserProps {
         this.id = id;
         this.data = data;
         this.auth = {
-            username: null,
-            hashed_password: null
+            username: auth?.username || null
         }
     }
 }
