@@ -80,6 +80,15 @@ class Database {
 
         console.log(request.data);
     }
+
+    async checkUsername(username: string) {
+        const req = await this.sendRequest("users/check", {
+            method: "POST",
+            data: { username }
+        })
+
+        return req.data;
+    }
 }
 
 export default new Database;
