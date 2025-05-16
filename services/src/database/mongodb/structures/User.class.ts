@@ -9,6 +9,8 @@ export default class MongoUser extends User {
 
         const generatedID = snowflake.generate();
 
+        this.auth.hashed_password = hashed_password;
+        
         const user = new userSchema({
             id: generatedID,
             data: this.data,
@@ -17,12 +19,18 @@ export default class MongoUser extends User {
         console.log("ID нового пользователя: " + generatedID);
 
         const res = await user.save();
-        console.log(res);
         return res;
     }
 
     async findByID(id: string) {
         const res = await userSchema.findOne({ id: id });
         console.log(res);
+    }
+
+    async findByUsername(username: string) {
+        console.log(username)
+        const res = await userSchema.findOne({ 'auth.username': username }).exec();
+        console.log(res);
+        return res;
     }
 }
