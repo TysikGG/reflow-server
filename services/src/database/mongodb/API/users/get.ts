@@ -10,10 +10,12 @@ const databaseGetRoute: FastifyPluginAsync = async (fastify, options) => {
             const username = req.body["username"];
 
             if (id) {
-                user.findByID(id);
+                const data = await user.findByID(id);
+                return data;
             } else if (username) {
-
-            } else {
+                const data = await user.findByUsername(username);
+                return data;
+            } else {    
                 res.status(404);
                 return { error: true, status: "NOT_FOUND" }
             }
