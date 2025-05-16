@@ -19,4 +19,12 @@ export default class GatewayUser extends User {
 
         console.log(user);
     }
+
+    async checkUsername(username: string) {
+        if (!username) return new Error("Никнейм не был указан для функции checkUsername!");
+
+        const usernameCheck = await database.checkUsername(username);
+
+        return usernameCheck;
+    }
 }
