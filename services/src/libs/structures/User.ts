@@ -4,7 +4,8 @@ interface UserProps {
 }
 
 interface UserAuthProps {
-    username: string
+    username?: string,
+    hashed_password?: string | null
 }
 
 export default class User implements UserProps {
@@ -15,8 +16,6 @@ export default class User implements UserProps {
     constructor(id?: string, data?: object, auth?: UserAuthProps) {
         this.id = id;
         this.data = data;
-        this.auth = {
-            username: auth?.username || null
-        }
+        this.auth = auth;
     }
 }
