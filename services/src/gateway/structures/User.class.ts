@@ -3,7 +3,7 @@ import database from "./Database.class";
 
 export default class GatewayUser extends User {
     async register(hashed_password: string) {
-        const username = this.auth.username;
+        const username = this.data.username;
 
         if (!username || !hashed_password) return new Error("Никнейм или пароль не указаны при регистрации!");
 
@@ -11,11 +11,11 @@ export default class GatewayUser extends User {
     }
 
     async login(hashed_password: string) {
-        const username = this.auth.username;
+        const username = this.data.username;
 
         if (!username || !hashed_password) return new Error("Никнейм или пароль не указаны при входе!");
 
-        const user = await database.getUserByUsername(username);
+        const user = await database.login(username, hashed_password);
 
         console.log(user);
     }

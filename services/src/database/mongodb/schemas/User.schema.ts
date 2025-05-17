@@ -3,11 +3,11 @@ import mongoose, { Schema } from "mongoose";
 const userSchema = new Schema({
     id: String,
     data: {
-        
+        username: String,
     },
     auth: {
-        username: String,
-        hashed_password: String
+        
+        _hashed_password: String
     }
 })
 

@@ -78,13 +78,22 @@ class Database {
             data: { username }
         });
 
-        console.log(request.data);
+        return request.data;
     }
 
     async checkUsername(username: string) {
         const req = await this.sendRequest("users/check", {
             method: "POST",
             data: { username }
+        })
+
+        return req.data;
+    }
+
+    async login(username: string, hashed_password: string) {
+        const req = await this.sendRequest("users/login", {
+            method: "POST",
+            data: { username, hashed_password }
         })
 
         return req.data;

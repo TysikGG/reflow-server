@@ -9,7 +9,6 @@ const loginRoute: FastifyPluginAsync = async (fastify, options) => {
         const user = new GatewayUser();
 
         const data = await user.checkUsername(username);
-        console.log(data);
         return data;
     })
 };

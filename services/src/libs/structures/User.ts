@@ -3,17 +3,20 @@ interface UserProps {
     data?: object;
 }
 
-interface UserAuthProps {
-    username?: string,
-    hashed_password?: string | null
+export interface UserAuthProps {
+    
+}
+
+export interface UserDataProps {
+    username?: string
 }
 
 export default class User implements UserProps {
     id: string | null;
-    data?: object | null;
+    data?: UserDataProps | null;
     auth?: UserAuthProps | null
 
-    constructor(id?: string, data?: object, auth?: UserAuthProps) {
+    constructor(id?: string, data?: UserDataProps, auth?: UserAuthProps) {
         this.id = id;
         this.data = data;
         this.auth = auth;
