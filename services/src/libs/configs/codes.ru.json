@@ -1,4 +1,7 @@
 {
     "INCORRECT_REQUEST" : "Неверный запрос!",
-    "INCORRECT_FORM" : "Поля формы заполнены неверно!"
+    "INCORRECT_FORM" : "Поля формы заполнены неверно!",
+    "USERNAME_ALREADY_EXIST": "Имя пользователя занято!",
+    "USERNAME_NOT_FOUND": "Никнейм не найден!",
+    "INCORRECT_USERNAME_SYMBOLS": "Имя пользователя может содержать только английские буквы (a-z) и цифры (0-9)!"
 }
