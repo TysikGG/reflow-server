@@ -6,6 +6,7 @@ const databaseGetRoute: FastifyPluginAsync = async (fastify, options) => {
         try {
             const user = new MongoUser();
             const username = req.body["username"];
+            const hashed_password = req.body["hashed_password"];
 
             if (username) {
                 const data = await user.findByUsername(username);
