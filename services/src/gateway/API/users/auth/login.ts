@@ -11,8 +11,9 @@ const loginRoute: FastifyPluginAsync = async (fastify, options) => {
         console.log(hashed_password);
         console.log(username);
 
-        const user = new GatewayUser(null, null, { username });
-
+        const user = new GatewayUser();
+        user.setUsername(username);
+        
         await user.login(hashed_password);
     })
 };
