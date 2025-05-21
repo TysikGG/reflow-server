@@ -34,6 +34,7 @@ export default class MongoUser extends User {
         console.log("ID нового пользователя: " + generatedID);
 
         const res = await user.save();
+        console.log(res);
         return res;
     }
 
@@ -66,12 +67,18 @@ export default class MongoUser extends User {
     }
 
     async findByUsername(username: string) {
-        const res = await this.findInDB({ 'auth.username': username });
+        const res = await this.findInDB({ 'data.username': username });
         console.log(res);
         return res;
     }
 
-    async loginByUsername() {
+    async checkPassword() {
 
+    }
+    
+    async loginByUsername(username: string) {
+        const res = await this.findInDB({ 'data.username': username });
+        console.log(res);
+        return res;
     }
 }

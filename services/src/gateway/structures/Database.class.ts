@@ -57,6 +57,8 @@ class Database {
         });
 
         console.log(request.data);
+
+        return { status: "USER_CREATED" };
     }
 
     async getUserByID(id: string) {
