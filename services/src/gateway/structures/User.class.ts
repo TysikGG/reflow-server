@@ -11,9 +11,10 @@ export default class GatewayUser extends User {
         if (!username.match(reg)) return new ServerError("INCORRECT_USERNAME_SYMBOLS");
 
         const checked = await this.checkUsername(username);
-        if (checked.found) return new ServerError("USERNAME_ALREADY_EXIST");
+        if (!checked.available) return new ServerError("USERNAME_ALREADY_EXIST");
 
-        await database.createUser(this, hashed_password);
+        const data = await database.createUser(this, hashed_password);
+        return data;
     }
 
     async login(hashed_password: string) {
