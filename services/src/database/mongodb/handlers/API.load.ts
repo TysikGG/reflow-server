@@ -1,6 +1,7 @@
 import autoload from "@fastify/autoload";
 import { FastifyInstance } from "fastify";
 import path from "path";
+import { hash } from "../../../libs/functions/hash";
 
 export default function load_API(server: FastifyInstance) {
     server.register(autoload, {

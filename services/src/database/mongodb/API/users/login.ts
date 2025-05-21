@@ -9,8 +9,8 @@ const databaseGetRoute: FastifyPluginAsync = async (fastify, options) => {
             const hashed_password = req.body["hashed_password"];
 
             if (username) {
-                const data = await user.findByUsername(username);
-                
+                const data = await user.loginByUsername(username);
+
             } else {    
                 res.status(404);
                 return { error: true, status: "NOT_FOUND" }
