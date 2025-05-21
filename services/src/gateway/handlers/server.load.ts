@@ -23,6 +23,17 @@ export default class Server {
     }
 
     connect_API(server: FastifyInstance) {
+        server.addHook('onRequest', async (req, res) => {
+            console.log(req?.body)
+            if (!req?.body) return;
+            const hashed_password = req.body['hashed_password'];
+            console.log(hashed_password);
+            if (hashed_password) req.body['hashed_password'] = 123123
+
+            const password = req.body['password'];
+            if (password) req.body['password'] = 123123
+        });
+
         server.register(autoload, {
             dir: path.join(__dirname, '..', 'API'),
             options: { prefix: process.env.DEFAULT_API_ROUTE }
